@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './assets/App.css';
 import React, { useState, useEffect } from "react";
 
-import SearchBar from './SearchBar';
+import SearchContainer from './components/SearchContainer';
+
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <div> <SearchBar/> </div>
+      <div> <SearchContainer/> </div>
       <div>{backend}</div>
     </div>
   );
