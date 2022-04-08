@@ -23,19 +23,8 @@ router.get('/po', function(req, res, next) {
                 res.json(data);
     });
 
-    /*axios
-        .post(url, data, {
-            headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-            },
-        })
-        .then(({data}) => {
-            console.log(data);
-    });*/
     
-    //res.send('Working  ok');
-    //res.json({ ok: 'Working ?' })
 });
 
 module.exports = router;
+

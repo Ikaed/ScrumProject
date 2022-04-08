@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 
 import { FixedSizeList } from 'react-window';
 
+//import {ButtonRow} from './ButtonRow';
 
 function SearchList(){
 
@@ -16,7 +17,7 @@ function SearchList(){
   
 
   return(
-    
+    <div>
       <FixedSizeList
       height={400}
       width={360}
@@ -24,8 +25,9 @@ function SearchList(){
       itemCount={200}
       overscanCount={5}
     >
-      {Row}
+     {Row}
     </FixedSizeList>
+    </div>
   );
 
 

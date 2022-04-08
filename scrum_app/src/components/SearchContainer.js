@@ -5,11 +5,11 @@ import TextField from '@mui/material/TextField';
 import SearchBar from "./SearchBar";
 import SearchList from "./SearchList";
 
-function SearchContainer(){
+const SearchContainer = ({submissionHandlerCity}) => {
 
         return (
             <div>
-                <SearchBar/>
+                <SearchBar submissionHandlerCity={submissionHandlerCity}/>
                 <SearchList/>
             </div>
         );

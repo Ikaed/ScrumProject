@@ -8,6 +8,14 @@ import SearchContainer from './components/SearchContainer';
 function App() {
 
   const [backend,setBackend]=useState("")
+
+  let submissionHandlerCity = (e) =>{
+    if (e.key === 'Enter') {
+      
+      console.log("oki");
+    }
+  
+  }
   
   useEffect(() => {
     fetch('http://localhost:9000/testBack/po')
@@ -21,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <div> <SearchContainer/> </div>
+      <div> <SearchContainer submissionHandlerCity={submissionHandlerCity} /> </div>
       <div>{backend}</div>
     </div>
   );
