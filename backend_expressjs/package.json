@@ -14,7 +14,8 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "node-fetch": "^2.6.6"
+    "node-fetch": "^2.6.6",
+    "openweather-apis": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -24,5 +25,4 @@
   "compilerOptions": {
     "esModuleInterop": true
   }
- 
 }
