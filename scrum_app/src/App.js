@@ -26,10 +26,6 @@ function App() {
               .then(backend => setBackend(backend.main.temp));
   }, []);
  
-  /*useEffect(() => {
-    fetch('http://localhost:9000/testBack').then(res => res.text()).then(backend => setBackend(backend));
-  }, []);*/
-
   return (
     <div className="App">
       <div> <SearchContainer submissionHandlerCity={submissionHandlerCity} /> </div>

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 
+import '../assets/SearchBar.css';
+
 
 const SearchBar = ({submissionHandlerCity}) => {
 
