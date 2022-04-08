@@ -11,8 +11,11 @@ function App() {
 
   let submissionHandlerCity = (e) =>{
     if (e.key === 'Enter') {
-      
-      console.log("oki");
+
+      fetch('http://localhost:9000/testBack/po/?city=' + e.target.value)
+        .then(res => res.json())
+        .then(backend => setBackend(backend.main.temp));
+      console.log(backend);
     }
   
   }

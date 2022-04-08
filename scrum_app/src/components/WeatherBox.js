@@ -9,7 +9,7 @@ const WeatherBox = () => {
 
         return (
             <div>
-                {days.maps(day => )}
+                
             </div>
         );
       
