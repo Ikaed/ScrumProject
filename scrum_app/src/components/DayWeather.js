@@ -9,8 +9,8 @@ const DayWeather = ({name, temp, sunrise, sunset, cloud_coverage, wind_speed, wi
       
         return (
             <div>
-                <div>The name is {name}</div>
-               <div>It is currently {temp} celcius</div>
+                <div><b>{name}</b></div>
+                <div>It is currently {temp} &deg;C</div>
                <div>The sun rises {sunrise}</div>
                <div>The sun sets {sunset}</div>
                <div>The cloud coverage is {cloud_coverage} %</div>
