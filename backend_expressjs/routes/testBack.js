@@ -7,7 +7,6 @@ var router = express.Router();
 const fetch = require('node-fetch');
 
 
-
 router.get('/', function(req, res, next) {
     res.send('Working  ok');
     //res.json({ ok: 'Working ?' })
@@ -21,17 +20,72 @@ router.get('/po', function(req, res, next) {
         city = "kiruna";
     }
     
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=96b93715b2af3387f93252f194d5a149')
             .then(function (response) {
                 return response.json();
             })
             .then(function (data){
                 console.log(data);
-                res.json(data);
+                //res.json(data);
+                res.json(formatWeatherDayOne(data));
     });
 
     
 });
+
+function formatWeatherDayOne(data){
+    return jsonDoc = {
+        "0" : {
+            "temp" : getTemperature(data),
+            "sunrise" : getSunrise(data),
+            "sunset" : getSunset(data),
+            "cloud_coverage" : getCloudCoverage(data),
+            "wind_speed": getWindSpeed(data),
+            "wind_direction": getWindDirection(data)
+        }
+    }
+
+    
+}
+
+// ----
+function getTemperature(data){
+    return data.main.temp;
+}
+
+
+// ---
+function getSunrise(data){
+    let unixTime = data.sys.sunrise;
+    const date = new Date(unixTime*1000);
+    return date.toLocaleDateString("en-US"); 
+}
+
+function getSunset(data){
+    let unixTime = data.sys.sunset;
+    const date = new Date(unixTime*1000);
+    return date.toLocaleDateString("en-US");
+    
+}
+
+// ----
+
+function getCloudCoverage(data){
+    return data.clouds.all;
+}
+
+// ----
+
+function getWindSpeed(data){
+    return data.wind.speed;
+}
+
+function getWindDirection(data){
+    return data.wind.deg;
+}
 
 module.exports = router;
 

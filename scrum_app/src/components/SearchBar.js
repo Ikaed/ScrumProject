@@ -26,7 +26,7 @@ const SearchBar = ({submissionHandlerCity}) => {
       
         return (
           <div className="main">
-            <h1>React Search</h1>
+         
             <div className="search">
             
               <TextField
@@ -34,7 +34,7 @@ const SearchBar = ({submissionHandlerCity}) => {
                 onChange={inputHandler}
                 variant="outlined"
                 fullWidth
-                label="Search"
+                label="Look up the weather"
                 value={inputText}
                 onKeyDown={submissionHandlerCity}
               />
