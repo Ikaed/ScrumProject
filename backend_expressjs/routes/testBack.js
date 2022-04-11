@@ -57,10 +57,10 @@ function formatWeatherDayOne(data){
 /*function getName(data) {
     return data.name;
 }
-
+*/
 function getTemperature(data){
     return data.main.temp;
-}*/
+}
 
 // ---
 function getSunrise(data){
