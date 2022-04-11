@@ -38,7 +38,8 @@ router.get('/po', function(req, res, next) {
 
 function formatWeatherDayOne(data){
     return jsonDoc = {
-        "0" : {
+        "0": {
+            //"name" : getName(data),
             "temp" : getTemperature(data),
             "sunrise" : getSunrise(data),
             "sunset" : getSunset(data),
@@ -52,10 +53,14 @@ function formatWeatherDayOne(data){
 }
 
 // ----
-function getTemperature(data){
-    return data.main.temp;
+
+/*function getName(data) {
+    return data.name;
 }
 
+function getTemperature(data){
+    return data.main.temp;
+}*/
 
 // ---
 function getSunrise(data){
