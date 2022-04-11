@@ -5,10 +5,12 @@ import TextField from '@mui/material/TextField';
 import SearchBar from "./SearchBar";
 //import SearchList from "./SearchList";
 
+import '../assets/SearchContainer.css';
+
 const SearchContainer = ({submissionHandlerCity}) => {
 
         return (
-            <div>
+            <div className="container">
                 <SearchBar submissionHandlerCity={submissionHandlerCity}/>
                 
             </div>

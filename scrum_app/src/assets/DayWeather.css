@@ -1,0 +1,21 @@
+.dayweather_flexcontainer{
+    display:flex;
+    justify-content: space-between;
+    padding-top : 30px;
+    padding-bottom: 30px;
+    background-color:  	 	#f5f39c;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dayweather_item{
+    background-color: #14ffb1;
+    padding:20px;
+    border-radius:5%;
+
+    
+}
+
+.dayweather_text{
+    font-weight: bold;
+}

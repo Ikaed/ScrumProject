@@ -20,7 +20,7 @@ const WeatherBox = ({results}) => {
         return (
             
         
-            <div>
+            <div className = "weatherbox_container">
             
                {arr.map((item, i) => <DayWeather key={i} temp={item.temp} 
                                             sunrise={item.sunrise}
