@@ -12,12 +12,15 @@ router.get('/', function(req, res, next) {
     //res.json({ ok: 'Working ?' })
 });
 
-router.get('/po', function(req, res, next) {
+router.get('/po', async function(req, res, next) {
 
     let city = req.query.city;
 
     if(city == null ){
-        city = "kiruna";
+        
+        let response = await fetch('https://geolocation-db.com/json');
+        let data = await response.json();
+        city = data.city;
     }
     
     res.header("Access-Control-Allow-Origin", "*");
@@ -39,6 +42,16 @@ router.get('/po', function(req, res, next) {
 function formatWeatherDayOne(data){
     return jsonDoc = {
         "0": {
+            //"name" : getName(data),
+            "temp" : getTemperature(data),
+            "sunrise" : getSunrise(data),
+            "sunset" : getSunset(data),
+            "cloud_coverage" : getCloudCoverage(data),
+            "wind_speed": getWindSpeed(data),
+            "wind_direction": getWindDirection(data)
+        },
+
+        "1": {
             //"name" : getName(data),
             "temp" : getTemperature(data),
             "sunrise" : getSunrise(data),
