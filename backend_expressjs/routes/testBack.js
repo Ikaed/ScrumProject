@@ -51,8 +51,39 @@ function formatWeather(data){
     let toLoop;
     
     daywait = howManyMoreToLoop(extractCurrentTime(data[0].dt_txt));
-    dayKey = extractCurrentDate(data[0].dt_txt);
+    dayKey = extractCurrentDay(data[0].dt_txt);
     toLoop = daywait + currentKey;
+
+
+    // Compare the current date with the first index corresponding to the date in the json file retrieved from the request
+    var d = new Date(extractCurrentYear(data[currentKey].dt_txt),
+                    transformMonthIntoDateFormat(extractCurrentMonth(data[currentKey].dt_txt)),
+                    extractCurrentDay(data[currentKey].dt_txt));
+
+    
+    if(getCurrentDate() < d && checkDaysAreDifferent(extractCurrentDay(data[currentKey].dt_txt))){
+        
+        jsonDoc[dayKey][extractCurrentTime(data[currentKey].dt_txt)] = {
+            "temp" : getTemperature(data[currentKey]),
+            "sunrise" : getSunrise(data[currentKey]),
+            "sunset" : getSunset(data[currentKey]),
+            "cloud_coverage" : getCloudCoverage(data[currentKey]),
+            "wind_speed": getWindSpeed(data[currentKey]),
+            "wind_direction": getWindDirection(data[currentKey])
+        };
+    }
+    else{
+        if(!jsonDoc["BOOM"])jsonDoc["BOOM"]={};
+        jsonDoc["BOOM"][extractCurrentTime(data[0].dt_txt)] = {
+            "temp" : "1",
+            "sunrise" : "2",
+            "sunset" : "3",
+            "cloud_coverage" : "4",
+            "wind_speed": "5",
+            "wind_direction": "6"
+        };
+    }
+
 
     while(isNextHourExisting(currentKey,data)){
        
@@ -151,13 +182,35 @@ function extractCurrentTime(textString){
     return parseInt(hour);
 }
 
-function extractCurrentDate(textString){
+function extractCurrentDay(textString){
     let time = textString.split(' ');
     let detailedTime = time[0].split("-");
     
     let day = detailedTime[2];
 
     return parseInt(day);
+}
+
+function extractCurrentMonth(textString){
+    let time = textString.split(' ');
+    let detailedTime = time[0].split("-");
+    
+    let month = detailedTime[1];
+
+    return parseInt(month);
+}
+
+function transformMonthIntoDateFormat(month){
+    return month-1;
+}
+
+function extractCurrentYear(textString){
+    let time = textString.split(' ');
+    let detailedTime = time[0].split("-");
+    
+    let year = detailedTime[0];
+
+    return parseInt(year);
 }
 
 function howManyMoreToLoop(hour){
@@ -172,6 +225,23 @@ function isNextHourExisting(currentKey, data){
     if (!data[currentKey]) return false;
     return true;
 }
+
+
+function getCurrentDayRequest(){
+    const today = new Date();
+    let day = today.getDate();
+
+    return day;
+}
+
+function getCurrentDate(){
+    return new Date();
+}
+
+function checkDaysAreDifferent(dateExtracted){
+    return dateExtracted != getCurrentDayRequest();
+}
+
 
 module.exports = router;
 
