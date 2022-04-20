@@ -44,12 +44,14 @@ function formatWeather(data){
 
     let jsonDoc = {};
     let currentKey = 0;
-    let dayKey = 0;
 
-    let daywait = 0;
-    let toLoop = 0;
+    let dayKey;
+    let daywait;
+
+    let toLoop;
     
     daywait = howManyMoreToLoop(extractCurrentTime(data[0].dt_txt));
+    dayKey = extractCurrentDate(data[0].dt_txt);
     toLoop = daywait + currentKey;
 
     while(isNextHourExisting(currentKey,data)){
@@ -147,6 +149,15 @@ function extractCurrentTime(textString){
     if(hour == "00") hour = "0";
 
     return parseInt(hour);
+}
+
+function extractCurrentDate(textString){
+    let time = textString.split(' ');
+    let detailedTime = time[0].split("-");
+    
+    let day = detailedTime[2];
+
+    return parseInt(day);
 }
 
 function howManyMoreToLoop(hour){
