@@ -26,44 +26,67 @@ router.get('/po', async function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=96b93715b2af3387f93252f194d5a149')
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=96b93715b2af3387f93252f194d5a149')
             .then(function (response) {
                 return response.json();
             })
             .then(function (data){
-                console.log(data);
+                //console.log(data.list[0]);
                 //res.json(data);
-                res.json(formatWeatherDayOne(data));
+                //res.json(formatWeather(data.list));
+                console.log(formatWeather(data.list));
     });
 
     
 });
 
-function formatWeatherDayOne(data){
-    return jsonDoc = {
-        "0": {
-            //"name" : getName(data),
-            "temp" : getTemperature(data),
-            "sunrise" : getSunrise(data),
-            "sunset" : getSunset(data),
-            "cloud_coverage" : getCloudCoverage(data),
-            "wind_speed": getWindSpeed(data),
-            "wind_direction": getWindDirection(data)
-        },
+function formatWeather(data){
 
-        "1": {
-            //"name" : getName(data),
-            "temp" : getTemperature(data),
-            "sunrise" : getSunrise(data),
-            "sunset" : getSunset(data),
-            "cloud_coverage" : getCloudCoverage(data),
-            "wind_speed": getWindSpeed(data),
-            "wind_direction": getWindDirection(data)
+    let jsonDoc = {};
+    let currentKey = 0;
+    let dayKey = 0;
+
+    let daywait = 0;
+    let toLoop = 0;
+    
+    daywait = howManyMoreToLoop(extractCurrentTime(data[0].dt_txt));
+    toLoop = daywait + currentKey;
+
+    while(isNextHourExisting(currentKey,data)){
+       
+        if(!jsonDoc[dayKey])jsonDoc[dayKey]={};
+
+        jsonDoc[dayKey][currentKey] = {
+            "temp" : getTemperature(data[currentKey]),
+            "sunrise" : getSunrise(data[currentKey]),
+            "sunset" : getSunset(data[currentKey]),
+            "cloud_coverage" : getCloudCoverage(data[currentKey]),
+            "wind_speed": getWindSpeed(data[currentKey]),
+            "wind_direction": getWindDirection(data[currentKey])
+        };
+        console.log("current key " + currentKey);
+        console.log("dayKey " + dayKey);
+
+
+        if(currentKey == toLoop){
+            dayKey = dayKey + 1;
+            daywait = howManyMoreToLoop(extractCurrentTime(data[currentKey+1].dt_txt));
+            console.log(dayKey + " : " + currentKey + " : " + daywait);
+            toLoop = daywait + currentKey;
         }
+
+        
+
+        currentKey = currentKey+1
     }
 
-    
+    return jsonDoc;
+
+ 
 }
+
+
+
 
 // ----
 
@@ -109,6 +132,34 @@ function getWindSpeed(data){
 
 function getWindDirection(data){
     return data.wind.deg;
+}
+
+
+
+// ---------------
+
+function extractCurrentTime(textString){
+    let time = textString.split(' ');
+    let detailedTime = time[1].split(":");
+    
+    let hour = detailedTime[0];
+
+    if(hour == "00") hour = "0";
+
+    return parseInt(hour);
+}
+
+function howManyMoreToLoop(hour){
+    let l = ((24-hour)/3)-1;
+
+    if(hour == 0) l=((24-hour)/3);
+
+    return Math.ceil(l);
+}
+
+function isNextHourExisting(currentKey, data){
+    if (!data[currentKey + 1]) return false;
+    return true;
 }
 
 module.exports = router;
