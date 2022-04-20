@@ -58,7 +58,7 @@ function formatWeather(data){
        
         if(!jsonDoc[dayKey])jsonDoc[dayKey]={};
 
-        jsonDoc[dayKey][currentKey] = {
+        jsonDoc[dayKey][extractCurrentTime(data[currentKey].dt_txt)] = {
             "temp" : getTemperature(data[currentKey]),
             "sunrise" : getSunrise(data[currentKey]),
             "sunset" : getSunset(data[currentKey]),
