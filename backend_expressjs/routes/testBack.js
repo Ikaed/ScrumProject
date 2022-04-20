@@ -33,7 +33,7 @@ router.get('/po', async function(req, res, next) {
             .then(function (data){
                 //console.log(data.list[0]);
                 //res.json(data);
-                //res.json(formatWeather(data.list));
+                res.json(formatWeather(data.list));
                 console.log(formatWeather(data.list));
     });
 
@@ -45,13 +45,17 @@ function formatWeather(data){
     let jsonDoc = {};
     let currentKey = 0;
 
-    let dayKey;
+    let dayKey = 0;
     let daywait;
 
     let toLoop;
+
+    let limitDays = 2;
+
+    let dayK
     
     daywait = howManyMoreToLoop(extractCurrentTime(data[0].dt_txt));
-    dayKey = extractCurrentDay(data[0].dt_txt);
+    dayK = extractCurrentDay(data[0].dt_txt);
     toLoop = daywait + currentKey;
 
 
@@ -63,7 +67,8 @@ function formatWeather(data){
     
     if(getCurrentDate() < d && checkDaysAreDifferent(extractCurrentDay(data[currentKey].dt_txt))){
         
-        jsonDoc[dayKey][extractCurrentTime(data[currentKey].dt_txt)] = {
+        if(!jsonDoc[dayK])jsonDoc[dayK]={};
+        jsonDoc[dayK][extractCurrentTime(data[currentKey].dt_txt)] = {
             "temp" : getTemperature(data[currentKey]),
             "sunrise" : getSunrise(data[currentKey]),
             "sunset" : getSunset(data[currentKey]),
@@ -72,7 +77,9 @@ function formatWeather(data){
             "wind_direction": getWindDirection(data[currentKey])
         };
     }
-    else{
+   
+    /*
+     else{
         if(!jsonDoc["BOOM"])jsonDoc["BOOM"]={};
         jsonDoc["BOOM"][extractCurrentTime(data[0].dt_txt)] = {
             "temp" : "1",
@@ -83,13 +90,14 @@ function formatWeather(data){
             "wind_direction": "6"
         };
     }
+    */
 
 
-    while(isNextHourExisting(currentKey,data)){
+    while(isNextHourExisting(currentKey,data) && dayKey<=limitDays){
        
-        if(!jsonDoc[dayKey])jsonDoc[dayKey]={};
+        if(!jsonDoc[dayK])jsonDoc[dayK]={};
 
-        jsonDoc[dayKey][extractCurrentTime(data[currentKey].dt_txt)] = {
+        jsonDoc[dayK][extractCurrentTime(data[currentKey].dt_txt)] = {
             "temp" : getTemperature(data[currentKey]),
             "sunrise" : getSunrise(data[currentKey]),
             "sunset" : getSunset(data[currentKey]),
@@ -103,12 +111,11 @@ function formatWeather(data){
 
         if(currentKey == toLoop){
             dayKey = dayKey + 1;
+            dayK = extractCurrentDay(data[currentKey+1].dt_txt);
             daywait = howManyMoreToLoop(extractCurrentTime(data[currentKey+1].dt_txt));
             console.log(dayKey + " : " + currentKey + " : " + daywait);
             toLoop = daywait + currentKey;
         }
-
-        
 
         currentKey = currentKey+1
     }
