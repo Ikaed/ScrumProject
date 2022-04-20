@@ -70,8 +70,6 @@ function formatWeather(data){
         if(!jsonDoc[dayK])jsonDoc[dayK]={};
         jsonDoc[dayK][extractCurrentTime(data[currentKey].dt_txt)] = {
             "temp" : getTemperature(data[currentKey]),
-            "sunrise" : getSunrise(data[currentKey]),
-            "sunset" : getSunset(data[currentKey]),
             "cloud_coverage" : getCloudCoverage(data[currentKey]),
             "wind_speed": getWindSpeed(data[currentKey]),
             "wind_direction": getWindDirection(data[currentKey])
@@ -99,8 +97,6 @@ function formatWeather(data){
 
         jsonDoc[dayK][extractCurrentTime(data[currentKey].dt_txt)] = {
             "temp" : getTemperature(data[currentKey]),
-            "sunrise" : getSunrise(data[currentKey]),
-            "sunset" : getSunset(data[currentKey]),
             "cloud_coverage" : getCloudCoverage(data[currentKey]),
             "wind_speed": getWindSpeed(data[currentKey]),
             "wind_direction": getWindDirection(data[currentKey])
