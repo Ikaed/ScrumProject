@@ -169,7 +169,7 @@ function howManyMoreToLoop(hour){
 }
 
 function isNextHourExisting(currentKey, data){
-    if (!data[currentKey + 1]) return false;
+    if (!data[currentKey]) return false;
     return true;
 }
 
