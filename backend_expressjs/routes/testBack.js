@@ -33,8 +33,8 @@ router.get('/po', async function(req, res, next) {
             .then(function (data){
                 //console.log(data.list[0]);
                 //res.json(data);
-                res.json(formatWeather(data.list));
-                console.log(formatWeather(data.list));
+                res.json(formatWeather(data));
+                console.log(formatWeather(data));
     });
 
     
@@ -54,25 +54,27 @@ function formatWeather(data){
 
     let dayK
     
-    daywait = howManyMoreToLoop(extractCurrentTime(data[0].dt_txt));
-    dayK = extractCurrentDay(data[0].dt_txt);
+    daywait = howManyMoreToLoop(extractCurrentTime(data.list[0].dt_txt));
+    dayK = extractCurrentDay(data.list[0].dt_txt);
     toLoop = daywait + currentKey;
 
 
     // Compare the current date with the first index corresponding to the date in the json file retrieved from the request
-    var d = new Date(extractCurrentYear(data[currentKey].dt_txt),
-                    transformMonthIntoDateFormat(extractCurrentMonth(data[currentKey].dt_txt)),
-                    extractCurrentDay(data[currentKey].dt_txt));
+    var d = new Date(extractCurrentYear(data.list[currentKey].dt_txt),
+                    transformMonthIntoDateFormat(extractCurrentMonth(data.list[currentKey].dt_txt)),
+                    extractCurrentDay(data.list[currentKey].dt_txt));
 
     
-    if(getCurrentDate() < d && checkDaysAreDifferent(extractCurrentDay(data[currentKey].dt_txt))){
+    if(getCurrentDate() < d && checkDaysAreDifferent(extractCurrentDay(data.list[currentKey].dt_txt))){
         
         if(!jsonDoc[dayK])jsonDoc[dayK]={};
-        jsonDoc[dayK][extractCurrentTime(data[currentKey].dt_txt)] = {
-            "temp" : getTemperature(data[currentKey]),
-            "cloud_coverage" : getCloudCoverage(data[currentKey]),
-            "wind_speed": getWindSpeed(data[currentKey]),
-            "wind_direction": getWindDirection(data[currentKey])
+        jsonDoc[dayK][extractCurrentTime(data.list[currentKey].dt_txt)] = {
+            "temp" : getTemperature(data.list[currentKey]),
+            "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
+            "sunrise" : getSunrise(data),
+            "sunset"  : getSunset(data),
+            "wind_speed": getWindSpeed(data.list[currentKey]),
+            "wind_direction": getWindDirection(data.list[currentKey])
         };
     }
    
@@ -91,15 +93,17 @@ function formatWeather(data){
     */
 
 
-    while(isNextHourExisting(currentKey,data) && dayKey<=limitDays){
+    while(isNextHourExisting(currentKey,data.list) && dayKey<=limitDays){
        
         if(!jsonDoc[dayK])jsonDoc[dayK]={};
 
-        jsonDoc[dayK][extractCurrentTime(data[currentKey].dt_txt)] = {
-            "temp" : getTemperature(data[currentKey]),
-            "cloud_coverage" : getCloudCoverage(data[currentKey]),
-            "wind_speed": getWindSpeed(data[currentKey]),
-            "wind_direction": getWindDirection(data[currentKey])
+        jsonDoc[dayK][extractCurrentTime(data.list[currentKey].dt_txt)] = {
+            "temp" : getTemperature(data.list[currentKey]),
+            "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
+            "sunrise" : getSunrise(data),
+            "sunset"  : getSunset(data),
+            "wind_speed": getWindSpeed(data.list[currentKey]),
+            "wind_direction": getWindDirection(data.list[currentKey])
         };
         console.log("current key " + currentKey);
         console.log("dayKey " + dayKey);
@@ -107,8 +111,8 @@ function formatWeather(data){
 
         if(currentKey == toLoop){
             dayKey = dayKey + 1;
-            dayK = extractCurrentDay(data[currentKey+1].dt_txt);
-            daywait = howManyMoreToLoop(extractCurrentTime(data[currentKey+1].dt_txt));
+            dayK = extractCurrentDay(data.list[currentKey+1].dt_txt);
+            daywait = howManyMoreToLoop(extractCurrentTime(data.list[currentKey+1].dt_txt));
             console.log(dayKey + " : " + currentKey + " : " + daywait);
             toLoop = daywait + currentKey;
         }
@@ -136,7 +140,7 @@ function getTemperature(data){
 
 // ---
 function getSunrise(data){
-    let unixTime = data.sys.sunrise;
+    let unixTime = data.city.sunrise;
     const date = new Date(unixTime*1000);
     return date.toLocaleTimeString("en-US", {
         hour: '2-digit',
@@ -145,7 +149,7 @@ function getSunrise(data){
 }
 
 function getSunset(data){
-    let unixTime = data.sys.sunset;
+    let unixTime = data.city.sunset;
     const date = new Date(unixTime*1000);
     return date.toLocaleTimeString("en-US", {
         hour: '2-digit',
