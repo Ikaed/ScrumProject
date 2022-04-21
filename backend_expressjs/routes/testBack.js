@@ -34,7 +34,7 @@ router.get('/po', async function(req, res, next) {
                 //console.log(data.list[0]);
                 //res.json(data);
                 res.json(formatWeather(data));
-                console.log(formatWeather(data));
+                //console.log(formatWeather(data));
     });
 
     
@@ -66,9 +66,12 @@ function formatWeather(data){
 
     
     if(getCurrentDate() < d && checkDaysAreDifferent(extractCurrentDay(data.list[currentKey].dt_txt))){
-        
-        if(!jsonDoc[dayK])jsonDoc[dayK]={};
-        jsonDoc[dayK][extractCurrentTime(data.list[currentKey].dt_txt)] = {
+        if(!jsonDoc.days)jsonDoc.days={};
+        if(!jsonDoc.days[dayK])jsonDoc.days[dayK]={};
+        if(!jsonDoc.days[dayK].hours)jsonDoc.days[dayK].hours={};
+
+
+        jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
             "temp" : getTemperature(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
@@ -94,10 +97,11 @@ function formatWeather(data){
 
 
     while(isNextHourExisting(currentKey,data.list) && dayKey<=limitDays){
-       
-        if(!jsonDoc[dayK])jsonDoc[dayK]={};
+        if(!jsonDoc.days)jsonDoc.days={};
+        if(!jsonDoc.days[dayK])jsonDoc.days[dayK]={};
+        if(!jsonDoc.days[dayK].hours)jsonDoc.days[dayK].hours={};
 
-        jsonDoc[dayK][extractCurrentTime(data.list[currentKey].dt_txt)] = {
+        jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
             "temp" : getTemperature(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
@@ -105,18 +109,18 @@ function formatWeather(data){
             "wind_speed": getWindSpeed(data.list[currentKey]),
             "wind_direction": getWindDirection(data.list[currentKey])
         };
-        console.log("current key " + currentKey);
-        console.log("dayKey " + dayKey);
+        
 
 
         if(currentKey == toLoop){
             dayKey = dayKey + 1;
             dayK = extractCurrentDay(data.list[currentKey+1].dt_txt);
             daywait = howManyMoreToLoop(extractCurrentTime(data.list[currentKey+1].dt_txt));
-            console.log(dayKey + " : " + currentKey + " : " + daywait);
+            console.log(dayKey + " : " + currentKey + " : " + dayK);
             toLoop = daywait + currentKey;
         }
 
+        console.log(currentKey);
         currentKey = currentKey+1
     }
 
