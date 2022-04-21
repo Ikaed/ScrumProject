@@ -5,14 +5,28 @@ import '../assets/DayWeather.css';
 import HourWeather from "./HourWeather";
 
 
-const HourBox = () => {
+const HourBox = ({results}) => {
 
-      
+        var arr = [];
+        Object.keys(results).forEach(function(key) {
+            arr.push(results[key]);
+            
+        });
+        console.log(arr);
+
+
         return (
           <div className="HourBox">
 
-              <HourWeather> </HourWeather> 
-                       
+  
+              <div>
+                {arr.map((item, i) => <HourWeather key={i} index={"HourBox_" + {i}} 
+                                           
+                                           />
+                                   )
+                          } 
+              </div>
+
       
           </div>
         );

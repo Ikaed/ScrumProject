@@ -13,6 +13,8 @@ function App() {
 
   const [backend,setBackend]=useState([])
 
+  const[days, setDays]=useState([])
+
   let submissionHandlerCity = (e) =>{
     if (e.key === 'Enter') {
 
@@ -26,7 +28,8 @@ function App() {
   }
 
   let clickWeatherDay = (e) =>{
-    console.log(e.currentTarget.id)
+      console.log(e.currentTarget.id)
+      setDays(backend[e.currentTarget.id].hours)
   }
   
   useEffect(() => {
@@ -46,7 +49,7 @@ function App() {
       <h1>Weather provider</h1>
       <div> <SearchContainer submissionHandlerCity={submissionHandlerCity} /> </div>
       <div> <WeatherBox results={backend} clickWeatherDay={clickWeatherDay}> </WeatherBox></div>
-      <div> <DetailsBox> </DetailsBox></div>
+      <div> <DetailsBox results={days}    > </DetailsBox></div>
     </div>
   );
 }

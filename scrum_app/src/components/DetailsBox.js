@@ -7,12 +7,12 @@ import ParametersDetail from "./ParametersDetail";
 import HourBox from './HourBox';
 
 
-const DetailsBox = () => {
+const DetailsBox = ({results}) => {
 
     
         return (
             <div className="DetailsBox">
-                <div> <HourBox> </HourBox></div>
+                <div> <HourBox results={results}> </HourBox></div>
                 <div> <ParametersDetail> </ParametersDetail></div>
           </div>
         );
