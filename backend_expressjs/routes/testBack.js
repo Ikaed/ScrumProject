@@ -113,11 +113,18 @@ function formatWeather(data){
 
 
         if(currentKey == toLoop){
+            // Parameters at the day level
+            jsonDoc.days[dayK].date = extractCurrentDay(data.list[currentKey].dt_txt);
+
+
+            //
             dayKey = dayKey + 1;
             dayK = extractCurrentDay(data.list[currentKey+1].dt_txt);
             daywait = howManyMoreToLoop(extractCurrentTime(data.list[currentKey+1].dt_txt));
             console.log(dayKey + " : " + currentKey + " : " + dayK);
             toLoop = daywait + currentKey;
+
+            
         }
 
         console.log(currentKey);
@@ -252,6 +259,7 @@ function getCurrentDate(){
 function checkDaysAreDifferent(dateExtracted){
     return dateExtracted != getCurrentDayRequest();
 }
+
 
 
 module.exports = router;
