@@ -9,11 +9,18 @@ import HourBox from './HourBox';
 
 const DetailsBox = ({results}) => {
 
+        const [listHour,setListHour]=useState([])
+
+        let clickWeatherHour = (e) =>{
+            console.log(e.currentTarget.id);
+            setListHour(results[e.currentTarget.id]);
+            console.log(results[e.currentTarget.id])
+        }
     
         return (
             <div className="DetailsBox">
-                <div> <HourBox results={results}> </HourBox></div>
-                <div> <ParametersDetail> </ParametersDetail></div>
+                <div> <HourBox results={results} clickWeatherHour={clickWeatherHour}> </HourBox></div>
+                <div> <ParametersDetail hour={listHour}> </ParametersDetail></div>
           </div>
         );
       

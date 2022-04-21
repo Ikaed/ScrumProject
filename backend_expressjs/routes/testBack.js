@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 
@@ -77,7 +78,9 @@ function formatWeather(data){
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
             "wind_speed": getWindSpeed(data.list[currentKey]),
-            "wind_direction": getWindDirection(data.list[currentKey])
+            "wind_direction": getWindDirection(data.list[currentKey]),
+            "hour_time" : extractDetailedTime(data.list[currentKey].dt_txt),
+            "hour_index": extractCurrentTime(data.list[currentKey].dt_txt),
         };
     }
    
@@ -107,11 +110,12 @@ function formatWeather(data){
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
             "wind_speed": getWindSpeed(data.list[currentKey]),
-            "wind_direction": getWindDirection(data.list[currentKey])
+            "wind_direction": getWindDirection(data.list[currentKey]),
+            "hour_time" : extractDetailedTime(data.list[currentKey].dt_txt),
+            "hour_index": extractCurrentTime(data.list[currentKey].dt_txt),
         };
         
-
-
+       
         if(currentKey == toLoop){
             // Parameters at the day level
             jsonDoc.days[dayK].date = extractCurrentDay(data.list[currentKey].dt_txt);
@@ -198,6 +202,13 @@ function extractCurrentTime(textString){
     if(hour == "00") hour = "0";
 
     return parseInt(hour);
+}
+
+function extractDetailedTime(textString){
+    let time = textString.split(' ');
+    let detailedTime = time[1];
+
+    return detailedTime;
 }
 
 function extractCurrentDay(textString){

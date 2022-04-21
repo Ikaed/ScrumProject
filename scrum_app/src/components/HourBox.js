@@ -5,7 +5,7 @@ import '../assets/DayWeather.css';
 import HourWeather from "./HourWeather";
 
 
-const HourBox = ({results}) => {
+const HourBox = ({results, clickWeatherHour}) => {
 
         var arr = [];
         Object.keys(results).forEach(function(key) {
@@ -20,7 +20,7 @@ const HourBox = ({results}) => {
 
   
               <div>
-                {arr.map((item, i) => <HourWeather key={i} index={"HourBox_" + {i}} 
+                {arr.map((item, i) => <HourWeather key={i} index={i} hour_time={item.hour_time} hour_index={item.hour_index} clickWeatherHour={clickWeatherHour}
                                            
                                            />
                                    )

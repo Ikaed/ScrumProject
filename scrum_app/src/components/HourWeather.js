@@ -4,13 +4,12 @@ import TextField from '@mui/material/TextField';
 import '../assets/DayWeather.css';
 
 
-const HourWeather = () => {
+const HourWeather = ({index, hour_time, hour_index, clickWeatherHour}) => {
 
         
-      
         return (
             <div className="">
-                <div className="HourBox_1"><a href="#">3PM</a></div>       
+                <div className={"HourBox_" + {index}}><button id={hour_index} onClick={clickWeatherHour}>{hour_time}</button></div>       
             </div>
         );
       

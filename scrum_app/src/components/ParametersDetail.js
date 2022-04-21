@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import '../assets/DayWeather.css';
 
 
-const ParametersDetail = () => {
+const ParametersDetail = ({hour}) => {
 
         
       
@@ -12,7 +12,7 @@ const ParametersDetail = () => {
             <div className="ParameterAll">
                <div className="Parameter-all">
                    <div className="Label">Temperature</div>
-                   <div className="value">T</div>
+                   <div className="value">{hour.temp}</div>
                 </div>
 
                <div className="Parameter-all">
