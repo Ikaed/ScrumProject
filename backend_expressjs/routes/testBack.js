@@ -73,7 +73,8 @@ function formatWeather(data){
 
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
-            "temp" : getTemperature(data.list[currentKey]),
+            "temp": getTemperature(data.list[currentKey]),
+            "icon": getIcon(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
@@ -105,7 +106,8 @@ function formatWeather(data){
         if(!jsonDoc.days[dayK].hours)jsonDoc.days[dayK].hours={};
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
-            "temp" : getTemperature(data.list[currentKey]),
+            "temp": getTemperature(data.list[currentKey]),
+            "icon": getIcon(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
@@ -149,6 +151,10 @@ function formatWeather(data){
     return data.name;
 }
 */
+function getIcon(data) {
+    return 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@4x.png'
+}
+
 function getTemperature(data){
     return data.main.temp;
 }
