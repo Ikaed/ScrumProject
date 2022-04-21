@@ -5,11 +5,12 @@ import DayWeather from "./DayWeather";
 
 import '../assets/WeatherBox.css';
 
+// import in wrong css
+import '../assets/DayWeather.css';
 
-const WeatherBox = ({results}) => {
+const WeatherBox = ({results, clickWeatherDay}) => {
 
-        var arrayWeeks = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
+        
         var arr = [];
         Object.keys(results).forEach(function(key) {
             arr.push(results[key]);
@@ -20,19 +21,13 @@ const WeatherBox = ({results}) => {
         return (
             
         
-            <div className = "weatherbox_container">
-            
-                {arr.map((item, i) => <DayWeather key={i}
-                                            temp={item.temp}
-                                            sunrise={item.sunrise}
-                                            sunset={item.sunset}
-                                            cloud_coverage={item.cloud_coverage}
-                                            wind_speed={item.wind_speed}
-                                            wind_direction={item.wind_direction}
-                                />
-                        )
-               }
-        
+            <div>
+                {arr.map((item, i) => <DayWeather key={i} index={i} day={item.date} clickWeatherDay={clickWeatherDay}
+                                           
+                                           />
+                                   )
+                          }
+               
             </div>
         );
       
@@ -41,3 +36,25 @@ const WeatherBox = ({results}) => {
 }
 
 export default WeatherBox;
+
+/**
+ * {arr.map((item, i) => <DayWeather key={i}
+                                           
+                                />
+                        )
+               }
+ */
+
+/*
+{temp, sunrise, sunset, cloud_coverage, wind_speed, wind_direction}
+
+ <DayWeather key={i}
+                                            temp={item.temp}
+                                            sunrise={item.sunrise}
+                                            sunset={item.sunset}
+                                            cloud_coverage={item.cloud_coverage}
+                                            wind_speed={item.wind_speed}
+                                            wind_direction={item.wind_direction}
+                                />
+
+*/
