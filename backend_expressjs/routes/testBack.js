@@ -156,7 +156,7 @@ function getIcon(data) {
 }
 
 function getTemperature(data){
-    return data.main.temp;
+    return Math.ceil(data.main.temp);
 }
 
 // ---

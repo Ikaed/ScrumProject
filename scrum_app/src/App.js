@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import SearchContainer from './components/SearchContainer';
 import WeatherBox from './components/WeatherBox';
 
-import logo from './assets/pic/logo/logolq.png'; 
+import logo from './assets/pic/logo/logohq.svg'; 
 import DetailsBox from './components/DetailsBox';
 
 
@@ -46,7 +46,7 @@ function App() {
             <a href="" class="Logo"><img src={logo}/></a>
         </nav>
       </div>
-      <h1>Weather provider</h1>
+    
       <div> <SearchContainer submissionHandlerCity={submissionHandlerCity} /> </div>
       <div> <WeatherBox results={backend} clickWeatherDay={clickWeatherDay}> </WeatherBox></div>
       <div> <DetailsBox results={days}    > </DetailsBox></div>

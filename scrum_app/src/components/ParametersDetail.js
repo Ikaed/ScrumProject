@@ -15,7 +15,7 @@ const ParametersDetail = ({hour}) => {
                         <span> <img src={hour.icon} /></span>
                     </div>
                    <div className="Label">Temperature</div>
-                   <div className="value">{hour.temp}</div>
+                    <div className="value">{hour.temp}°C</div>
                 </div>
 
                <div className="Parameter-all">
