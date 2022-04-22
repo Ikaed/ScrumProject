@@ -8,6 +8,10 @@
     padding-right: 15px;
 }
 
+.DetailsBox {
+    display: flex;
+}
+
 .dayweather_item{
     background-color: #14ffb1;
     padding:20px;

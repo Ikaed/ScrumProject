@@ -14,6 +14,8 @@ const ParametersDetail = ({hour}) => {
                     <div class="image-cloud">
                         <span> <img src={hour.icon} /></span>
                     </div>
+                    </div>
+                    <div className="Parameter-all">
                    <div className="Label">Temperature</div>
                     <div className="value">{hour.temp}°C</div>
                 </div>
