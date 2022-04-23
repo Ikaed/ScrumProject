@@ -8,7 +8,7 @@ const HourWeather = ({index, hour_time, hour_index, clickWeatherHour}) => {
 
         
         return (
-            <div className="">
+            <div>
                 <div className={"HourBox_" + {index}}><button id={hour_index} onClick={clickWeatherHour}>{hour_time}</button></div>       
             </div>
         );

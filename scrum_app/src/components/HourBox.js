@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 
+import '../assets/HourBox.css';
 import '../assets/DayWeather.css';
 import HourWeather from "./HourWeather";
 
