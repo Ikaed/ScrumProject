@@ -73,6 +73,8 @@ function formatWeather(data){
 
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
+            "name": getName(data.city.name),
+            "time": getTime(data.city.timezone),
             "temp": getTemperature(data.list[currentKey]),
             "icon": getIcon(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
@@ -106,6 +108,8 @@ function formatWeather(data){
         if(!jsonDoc.days[dayK].hours)jsonDoc.days[dayK].hours={};
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
+            "name": getName(data),
+            "time": getTime(data),
             "temp": getTemperature(data.list[currentKey]),
             "icon": getIcon(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
@@ -151,6 +155,25 @@ function formatWeather(data){
     return data.name;
 }
 */
+
+function getName(data) {
+    
+    return data.city.name.replace("County", "")
+}
+
+function getTime(data) {
+
+    var d = new Date()
+    var localTime = d.getTime()
+    var localOffset = d.getTimezoneOffset()
+    var utc = localTime + localOffset
+    var time = utc + (1000 * data.city.timezone);
+    console.log(data)
+    var nd = new Date(time);
+ 
+    return nd.toUTCString().substring(17,22);
+}
+
 function getIcon(data) {
     return 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@4x.png'
 }

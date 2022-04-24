@@ -9,12 +9,17 @@ const ParametersDetail = ({hour}) => {
         
       
         return (
+            
             <div className="ParameterAll">
-                <div className="Parameter-all">
+                
+
+                <div className="Parameter-all">   
+              
                     <div class="image-cloud">
                         <span> <img src={hour.icon} /></span>
                     </div>
                     </div>
+
                     <div className="Parameter-all">
                    <div className="Label">Temperature</div>
                     <div className="value">{hour.temp}°C</div>
@@ -36,7 +41,7 @@ const ParametersDetail = ({hour}) => {
 
                <div className="Parameter-all">
                    <div className="Label5">Wind speed</div>
-                   <div className="value5">{hour.wind_speed}</div>
+                   <div className="value5">{hour.wind_speed} m/sec</div>
                 </div>
                 
                <div className="Parameter-all">
@@ -44,8 +49,14 @@ const ParametersDetail = ({hour}) => {
                     <div className="arrow_rotation">
                         <div className="value6" style={{ transform: `rotate(${hour.wind_direction}deg)` }}>↓</div>
                     </div>
-                 
+                
                </div>
+
+               <div className="Parameter-all">
+                    <div className="Label7">Current time in {hour.name}</div>
+        <div className="value7">{hour.time}</div>
+        </div>
+
       </div> 
         );
       
