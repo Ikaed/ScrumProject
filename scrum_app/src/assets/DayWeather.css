@@ -10,7 +10,7 @@
 
 .DetailsBox {
     display: flex;
-    margin: 0px 50px;
+    margin: 180px 50px;
   
 }
 
@@ -93,7 +93,9 @@
   
   }
   .image-cloud{
-
+    position: absolute;
+    transform: translateY(-125%) translateX(20%);
+    
   }
   .ParameterAll{
   margin-top: 105px;

@@ -73,8 +73,8 @@ function formatWeather(data){
 
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
-            "name": getName(data.city.name),
-            "time": getTime(data.city.timezone),
+            "name": getName(data),
+            "time": getTime(data),
             "temp": getTemperature(data.list[currentKey]),
             "icon": getIcon(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
@@ -108,7 +108,7 @@ function formatWeather(data){
         if(!jsonDoc.days[dayK].hours)jsonDoc.days[dayK].hours={};
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
-            "name": getName(data),
+       "name": getName(data),
             "time": getTime(data),
             "temp": getTemperature(data.list[currentKey]),
             "icon": getIcon(data.list[currentKey]),
