@@ -10,6 +10,8 @@
 
 .DetailsBox {
     display: flex;
+    margin: 0px 50px;
+  
 }
 
 .dayweather_item{
@@ -91,14 +93,13 @@
   
   }
   .image-cloud{
-  margin-top: 10px;
-  margin-right: 350px;
+
   }
   .ParameterAll{
   margin-top: 105px;
   }
   .Parameter-all{
-  border-bottom: 1px solid rgba(0,0,0,.15);
+
   display: flex;
   flex-wrap: wrap;
   }

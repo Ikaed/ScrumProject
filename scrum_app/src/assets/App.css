@@ -42,7 +42,8 @@
 
 
 
-.Logo{
-  margin-right: 100px;
-  margin-top: 30px;
+.Logo img{
+  height: 40px;
+max-height: 40px;
+width: auto;
 }
