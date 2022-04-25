@@ -39,7 +39,21 @@ const TypeClothingSuggestion = ({hour}) => {
       <img src={require('../assets/pic/clothing/jacket.png')} alt="A jacket">
       </img>
       </a>
+
+      
           </>
+
+} else if (hour.temp >= 17){
+   
+  return <>
+  <a href="https://www.asos.com/search/?currentpricerange=0-195&q=t%20shirt&refine=discount_band:4" target="_blank">
+    <img src={require('../assets/pic/clothing/t-shirt.png')} alt="A t-shirt" target="_blank">
+      </img>
+      </a>
+    
+
+  
+      </>
 
 /*} else if (hour.temp > 20){
    
