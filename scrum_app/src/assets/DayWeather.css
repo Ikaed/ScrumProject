@@ -119,7 +119,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 835px;
   margin-top: -250px;
   }
   .Label2{
@@ -134,7 +134,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 813px;
   margin-top: -220px;
   }
   .Label3{
@@ -251,12 +251,14 @@
   border: 1px solid;
   }
   .TypeClothingSuggestion{
-  margin-top: -257px;
-  margin-left: 810px;
-  border:1px rgba(243, 73, 6, 0.315);
-  width: 30%;
-  height: 257px;
-  border: 1px solid;  
+    margin-top: -135px;
+    margin-left: 338px;
+    width: 45%;
+    height: 257px;
+  }
+
+  .TypeClothingSuggestion img{
+  width:120px;
   }
   .Suggestion{
   margin-left: 20px;
