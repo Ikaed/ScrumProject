@@ -12,18 +12,57 @@ const TypeClothingSuggestion = ({hour}) => {
   function getTempClothing(hour) {
    
     if(hour.temp <= -20) {
-      return <><img src={require('../assets/pic/clothing/gloves.png')} alt="Pair of gloves"/><img src={require('../assets/pic/clothing/scarf.png')} alt="A scarf"></img><img src={require('../assets/pic/clothing/boot.png')} /> <a href="https://www.asos.com/men/fashion-feed/2017_12_12-tues/top-10-winter-boots/">Considering buying new boots? Click here to get 30% off your purchase</a></>
+      return <>
+     
+      <a href="https://www.asos.com/search/?currentpricerange=0-115&q=gloves&refine=discount_band:4" target="_blank">
+        <img src={require('../assets/pic/clothing/gloves.png')} alt="Pair of gloves"/>
+        </a>
+
+        <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
+      <img src={require('../assets/pic/clothing/scarf.png')} alt="A scarf"/>
+      </a>
+
+      <a href="https://www.asos.com/search/?currentpricerange=0-325&q=winter%20boots&refine=discount_band:4" alt="A boot" target="_blank">
+        <img src={require('../assets/pic/clothing/boot.png')} /> 
+        </a>
+        
+        </>
       //checks a value between -19 and up to 15 degrees
-    } else if (hour.temp > -19 && hour.temp < 15){
+    } else if (hour.temp > -19 && hour.temp <= 15){
    
-      return <img src={require('../assets/pic/clothing/scarf.png')} alt="A scarf"></img>
+      return <>
+      <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
+        <img src={require('../assets/pic/clothing/scarf.png')} alt="A scarf" target="_blank">
+          </img>
+          </a>
+          <a href="https://www.asos.com/search/?currentpricerange=25-300&q=padded%20jacket&refine=discount_band:4" target="_blank">
+      <img src={require('../assets/pic/clothing/jacket.png')} alt="A jacket">
+      </img>
+      </a>
+          </>
+
+/*} else if (hour.temp > 20){
+   
+  return <>
+  <a href="https://www.asos.com/search/?q=scarf" target="_blank">
+    <img src={require('../assets/pic/clothing/scarf.png')} alt="A scarf" target="_blank">
+      </img>
+      </a>
+      </>
       
     }
+    */
    }
+  }
 //the temperature should not recommend wearing a jeansjacket if it is below a certain temperature
    function getWindClothing(hour) {
-    if ((hour.wind_speed > 3) && !(hour.temp <= -20)) {
-      return <img src={require('../assets/pic/clothing/jeansjacket.png')} alt="A jeans jacket"></img>
+    if ((hour.wind_speed > 3) && !(hour.temp <= -20) && hour.temp >= 16) {
+      return <>
+       <a href="https://www.asos.com/search/?currentpricerange=25-300&q=jeans%20jacket&refine=discount_band:4" target="_blank">
+      <img src={require('../assets/pic/clothing/jeansjacket.png')} alt="A jeans jacket">
+      </img>
+      </a>
+      </>
     //} else if (hour.wind_speed > 3) {
      // return <img src={require('...')} alt=""></img>
     //}
