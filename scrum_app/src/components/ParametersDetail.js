@@ -34,6 +34,7 @@ const ParametersDetail = ({hour}) => {
                    <div className="Label3">Sunset</div>
                    <div className="value3">{hour.sunset}</div>
                 </div>
+                
                <div className="Parameter-all">
                   <div className="Label4">Coverage</div> 
                   <div className="value4">{hour.cloud_coverage}</div>

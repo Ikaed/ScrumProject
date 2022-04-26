@@ -77,6 +77,7 @@ function formatWeather(data){
             "time": getTime(data),
             "temp": getTemperature(data.list[currentKey]),
             "icon": getIcon(data.list[currentKey]),
+            "sky": getSky(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
@@ -112,6 +113,7 @@ function formatWeather(data){
             "time": getTime(data),
             "temp": getTemperature(data.list[currentKey]),
             "icon": getIcon(data.list[currentKey]),
+            "sky": getSky(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
@@ -176,6 +178,10 @@ function getTime(data) {
 
 function getIcon(data) {
     return 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@4x.png'
+}
+
+function getSky(data) {
+    return data.weather[0].main;
 }
 
 function getTemperature(data){

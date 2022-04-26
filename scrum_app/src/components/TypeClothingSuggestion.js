@@ -43,7 +43,7 @@ const TypeClothingSuggestion = ({hour}) => {
       
           </>
 
-} else if (hour.temp >= 17){
+} else if (hour.temp >= 17 && hour.sky == 'Clear') {
    
   return <>
   <a href="https://www.asos.com/search/?currentpricerange=0-195&q=t%20shirt&refine=discount_band:4" target="_blank">
@@ -82,11 +82,26 @@ const TypeClothingSuggestion = ({hour}) => {
     //}
    }
   }
+
+ function getSky(hour) {
+   if(hour.sky == 'Clouds' && hour.temp >= 20) {
+  return <> 
+  <a href="https://www.asos.com/search/?currentpricerange=0-195&q=t%20shirt&refine=discount_band:4" target="_blank">
+   <img src={require('../assets/pic/clothing/t-shirt.png')} alt="A t-shirt" target="_blank">
+     </img>
+     </a>
+     </>
+   }
+
+   
+ }
+
+
   return (
  
  
     <div className="TypeClothingSuggestion">
-          {getTempClothing(hour)}  {getWindClothing(hour)}
+         {getSky(hour)}  {getTempClothing(hour)}  {getWindClothing(hour)} 
       </div>
     );
  
@@ -94,5 +109,7 @@ const TypeClothingSuggestion = ({hour}) => {
    
 }
  
+
+
 export default TypeClothingSuggestion;
 
