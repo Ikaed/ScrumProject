@@ -16,7 +16,7 @@ const ParametersDetail = ({hour}) => {
                 <div className="Parameter-all">   
               
                     <div class="image-cloud">
-                        <span> <img src={hour.icon} /></span>
+                        <span> <img id="cloud" src={hour.icon}  /></span>
                     </div>
                     </div>
 
@@ -34,7 +34,6 @@ const ParametersDetail = ({hour}) => {
                    <div className="Label3">Sunset</div>
                    <div className="value3">{hour.sunset}</div>
                 </div>
-                
                <div className="Parameter-all">
                   <div className="Label4">Coverage</div> 
                   <div className="value4">{hour.cloud_coverage}</div>

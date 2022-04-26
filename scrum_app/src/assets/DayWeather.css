@@ -110,14 +110,16 @@
   color: black;
   margin-left: 300px;
   margin-top: -250px;
+  font-weight: bold;
   }
 
   .value{
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 835px;
+  margin-left:  805px;
   margin-top: -250px;
+  font-weight: bold;
   }
   .Label2{
   font-size: 16px;
@@ -131,7 +133,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 813px;
+  margin-left: 787px;
   margin-top: -220px;
   }
   .Label3{
@@ -146,7 +148,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 505px;
+  margin-left: 787px;
   margin-top: -190px;
   }
   .Label4{
@@ -161,7 +163,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 534px;
+  margin-left: 829px;
   margin-top: -160px;
   }
   .Label5{
@@ -176,7 +178,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 465px;
+  margin-left: 775px;
   margin-top: -130px;
   }
   .Label6{
@@ -188,10 +190,10 @@
   margin-top: -100px;
   }
   .value6{
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 835px;
   margin-top: -100px;
   }
 
@@ -208,7 +210,7 @@
     font-size: 15px;
     font-weight: 300;
     line-height: 1.33;
-    margin-left: 420px;
+    margin-left: 810px;
     margin-top: -70px;
     }
 
@@ -249,8 +251,8 @@
   }
   .TypeClothingSuggestion{
     margin-top: -135px;
-    margin-left: 338px;
-    width: 45%;
+    margin-left: 129px;
+    width: 85%;
     height: 257px;
   }
 
@@ -262,12 +264,24 @@ background-color: #EEEEEE;
 color: #333333;
 padding: 2px 6px 2px 6px;
 border: 1px solid #8f8f9d;
-
+margin: -1px 1px;
 border-radius: 5px;
   }
 .TypeClothingSuggestion img:hover{
   background:#d0d0d7;
 }
+
+#cloud {
+  width: 173px;
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: white;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #8f8f9d;
+  border-radius: 5px;
+}
+
   
   .Suggestion{
   margin-left: 20px;
