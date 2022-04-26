@@ -64,23 +64,20 @@
     text-align: center;
   }
   .day{
-    padding: 8px 45px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    background-color: white; 
-    color: black; 
-    border: 2px solid #008CBA;
-    border-radius: 10px;
+    width:120px;
+    font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  font-size:16px;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #8f8f9d;
+  border-radius: 5px;
+    }
+  .day:hover{
+    background:#d0d0d7;
   }
-  .day:hover {
-    background-color: #008CBA;
-    color: white;
-  }
+ 
   .Temp{
     text-align: center;
     font-size: 48px;
@@ -264,10 +261,8 @@ text-decoration: none;
 background-color: #EEEEEE;
 color: #333333;
 padding: 2px 6px 2px 6px;
-border-top: 1px solid #CCCCCC;
-border-right: 1px solid #333333;
-border-bottom: 1px solid #333333;
-border-left: 1px solid #CCCCCC;
+border: 1px solid #8f8f9d;
+
 border-radius: 5px;
   }
 .TypeClothingSuggestion img:hover{
