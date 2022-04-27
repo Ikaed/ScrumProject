@@ -72,8 +72,45 @@ return<>
     
   </>
 
+}
+else if (hour.temp > -10 && hour.temp <= 1){
+
+  return <>
+  <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
+    <img src={require('../assets/pic/clothing/scarf.png')} alt="A scarf">
+      </img>
+      </a>
+ 
+      <a href="https://www.asos.com/search/?currentpricerange=25-300&q=padded%20jacket&refine=discount_band:4" target="_blank">
+  <img src={require('../assets/pic/clothing/jacket.png')} alt="A jacket">
+  </img>
+  </a>
+
+  
+  <a href="https://www.asos.com/search/?currentpricerange=0-325&q=sweater&refine=discount_band:4" target="_blank">
+    <img src={require('../assets/pic/clothing/sweater.png')} alt="A sweater" /> 
+    </a>
+
+    <a href="https://www.asos.com/search/?currentpricerange=0-325&q=winter%20hat&refine=discount_band:4" target="_blank">
+        <img src={require('../assets/pic/clothing/winter-hat.png')} alt="A winter jacket"  /> 
+        </a>
+
+        <a href="https://www.asos.com/search/?currentpricerange=0-325&q=winter%20boots&refine=discount_band:4"  target="_blank">
+        <img src={require('../assets/pic/clothing/boot.png')} alt="A boot"/> 
+        </a>
+
+        <a href="https://www.asos.com/search/?currentpricerange=0-115&q=gloves&refine=discount_band:4" target="_blank">
+        <img src={require('../assets/pic/clothing/gloves.png')} alt="Pair of gloves"/>
+        </a>
+
+      </>
+      
+
+    
+
+
     }
-    else if (hour.temp > -10 && hour.temp <= 16){
+    else if (hour.temp >= 2 && hour.temp <= 16){
    
       return <>
       <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
@@ -118,7 +155,7 @@ return<>
 }
 //the temperature should not recommend wearing a jeansjacket if it is below a certain temperature
    function getWindClothing(hour) {
-    if (hour.wind_speed >= 5 && hour.temp >= 16 && hour.temp <= 19) {
+    if (hour.wind_speed >= 5 && hour.temp >= 16 && hour.temp <= 20) {
       return <>
        <a href="https://www.asos.com/search/?currentpricerange=25-300&q=coat&refine=discount_band:4" target="_blank">
       <img src={require('../assets/pic/clothing/coat.png')} alt="A coat">
@@ -135,7 +172,7 @@ return<>
 
   </>
   
-       } else if (hour.temp >= 20 && hour.sky == 'Clear' && hour.wind_speed >= 3 && hour.wind_speed <= 4) {
+       } else if (hour.temp >= 20 && hour.sky == 'Clear' && hour.wind_speed >= 2 && hour.wind_speed <= 4) {
    
           return <>
           <a href="https://www.asos.com/search/?currentpricerange=0-195&q=t%20shirt&refine=discount_band:4" target="_blank">
@@ -163,7 +200,7 @@ return<>
   }
    
  function getSky(hour) {
-   if(hour.sky == 'Clouds' && hour.temp >= 20) {
+   if(hour.sky == 'Clouds' && hour.temp >= 23) {
   return <> 
   <a href="https://www.asos.com/search/?currentpricerange=0-195&q=t%20shirt&refine=discount_band:4" target="_blank">
    <img src={require('../assets/pic/clothing/t-shirt.png')} alt="A t-shirt" target="_blank">
