@@ -11,35 +11,7 @@ const TypeClothingSuggestion = ({hour}) => {
  
   function getTempClothing(hour) {
    
-    if(hour.temp >= -11 && hour.temp <= -19) {
-      return <>
-     
-      <a href="https://www.asos.com/search/?currentpricerange=0-115&q=gloves&refine=discount_band:4" target="_blank">
-        <img title="Pair of gloves" src={require('../assets/pic/clothing/gloves.png')} alt="Pair of gloves"/>
-        </a>
-
-        <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
-      <img title="A scarf" src={require('../assets/pic/clothing/scarf.png')} alt="A scarf"/>
-      </a>
-
-      <a href="https://www.asos.com/search/?currentpricerange=0-325&q=winter%20boots&refine=discount_band:4" alt="A boot" target="_blank">
-        <img title="A boot" src={require('../assets/pic/clothing/boot.png')} /> 
-        </a>
-    
-        <a href="https://www.asos.com/search/?currentpricerange=0-325&q=winter%20jacket&refine=discount_band:4" alt="A winter jacket" target="_blank">
-        <img title="A winter jacket" src={require('../assets/pic/clothing/winterjacket.png')} /> 
-        </a>
-    
-        <a href="https://www.asos.com/search/?currentpricerange=0-325&q=winter%20hat&refine=discount_band:4" alt="A winter hat" target="_blank">
-        <img src={require('../assets/pic/clothing/winter-hat.png')} title="A winter hat" /> 
-        </a>
-    
-        
-        </>
-
-  
-      //checks a value between -19 and up to 15 degrees
-    } else if (hour.temp <= -20) {
+    if(hour.temp <= -11) {
 return<>
       <a href="https://www.asos.com/search/?currentpricerange=0-115&q=gloves&refine=discount_band:4" target="_blank">
       <img src={require('../assets/pic/clothing/gloves.png')} title="Pair of gloves" alt="Pair of gloves"/>
@@ -73,7 +45,7 @@ return<>
   </>
 
 }
-else if (hour.temp > -10 && hour.temp <= 1){
+else if (hour.temp >= -10 && hour.temp <= 1){
 
   return <>
   <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
@@ -110,7 +82,7 @@ else if (hour.temp > -10 && hour.temp <= 1){
 
 
     }
-    else if (hour.temp >= 2 && hour.temp <= 14){
+    else if (hour.temp >= 2 && hour.temp <= 18 && hour.wind_speed <= 5 && hour.sky=="Clear"){
    
       return <>
         <a href="https://www.asos.com/search/?currentpricerange=0-195&q=scarf&refine=discount_band:4" target="_blank">
@@ -176,7 +148,7 @@ else if (hour.temp > -10 && hour.temp <= 1){
 
   </>
   
-       } else if (hour.temp >= 20 && hour.sky == 'Clear' && hour.wind_speed >= 3 && hour.wind_speed <= 4) {
+       } else if (hour.temp <= 19 && hour.temp >=15 && hour.sky == 'Clear' && hour.wind_speed >= 1 && hour.wind_speed <= 4) {
    
           return <>
         <a href="https://www.asos.com/search/?currentpricerange=0-195&q=t%20shirt&refine=discount_band:4" target="_blank">
@@ -212,7 +184,7 @@ else if (hour.temp > -10 && hour.temp <= 1){
                 </a>
                 
      </>
-   } else if ( hour.wind_speed <= 5 && hour.sky == 'Clouds' && hour.temp >= 15 && hour.temp <= 20) {
+   } else if ( hour.wind_speed <= 5 && hour.sky == 'Clouds' && hour.temp >= 2 && hour.temp <= 20) {
 return <>
 
 <a href="https://www.asos.com/search/?currentpricerange=25-300&q=hoodie&refine=discount_band:4" target="_blank">
