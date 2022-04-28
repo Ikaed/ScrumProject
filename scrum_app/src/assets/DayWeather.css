@@ -8,6 +8,12 @@
     padding-right: 15px;
 }
 
+.DetailsBox {
+    display: flex;
+    margin: 180px 50px;
+  
+}
+
 .dayweather_item{
     background-color: #14ffb1;
     padding:20px;
@@ -33,48 +39,45 @@
     border: 1px snow;
     width: 300px;
     height: 115px;
-    border: 1px solid;
+  
     border-radius: 12px;
     text-align: center;
   }
-  .index_8{
+  .index_1{
     margin-top: -115px;
     margin-left: 345px;
     border: 1px snow;
     width: 300px;
     height: 115px;
-    border: 1px solid;
+  
     border-radius: 12px;
     text-align: center;
   }
-  .index_16{
+  .index_2{
     margin-top: -115px;
     margin-left: 660px;
     border: 1px snow;
     width: 300px;
     height: 115px;
-    border: 1px solid;
+  
     border-radius: 12px;
     text-align: center;
   }
   .day{
-    padding: 8px 45px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    background-color: white; 
-    color: black; 
-    border: 2px solid #008CBA;
-    border-radius: 10px;
+    width:120px;
+    font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  font-size:16px;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #8f8f9d;
+  border-radius: 5px;
+    }
+  .day:hover{
+    background:#d0d0d7;
   }
-  .day:hover {
-    background-color: #008CBA;
-    color: white;
-  }
+ 
   .Temp{
     text-align: center;
     font-size: 48px;
@@ -87,17 +90,19 @@
   
   }
   .image-cloud{
-  margin-top: 10px;
-  margin-right: 350px;
+    position: absolute;
+    transform: translateY(-125%) translateX(20%);
+    
   }
   .ParameterAll{
   margin-top: 105px;
   }
   .Parameter-all{
-  border-bottom: 1px solid rgba(0,0,0,.15);
+
   display: flex;
   flex-wrap: wrap;
   }
+
   .Label{
   font-size: 16px;
   line-height: 1.25;
@@ -105,13 +110,16 @@
   color: black;
   margin-left: 300px;
   margin-top: -250px;
+  font-weight: bold;
   }
+
   .value{
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left:  416px;
   margin-top: -250px;
+  font-weight: bold;
   }
   .Label2{
   font-size: 16px;
@@ -125,7 +133,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 438px;
   margin-top: -220px;
   }
   .Label3{
@@ -140,7 +148,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 442px;
   margin-top: -190px;
   }
   .Label4{
@@ -155,7 +163,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 468px;
   margin-top: -160px;
   }
   .Label5{
@@ -170,7 +178,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 398px;
   margin-top: -130px;
   }
   .Label6{
@@ -182,12 +190,30 @@
   margin-top: -100px;
   }
   .value6{
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1.33;
-  margin-left: 500px;
+  margin-left: 439px;
   margin-top: -100px;
   }
+
+  .Label7{
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 300;
+    color: black;
+    margin-left: 300px;
+    margin-top: -70px;
+    }
+
+  .value7{
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.33;
+    margin-left: 816px;
+    margin-top: -70px;
+    }
+
   .HourBox_1{
   margin-top: 9px;
   margin-left: 20px;
@@ -224,13 +250,39 @@
   border: 1px solid;
   }
   .TypeClothingSuggestion{
-  margin-top: -257px;
-  margin-left: 810px;
-  border:1px rgba(243, 73, 6, 0.315);
-  width: 30%;
-  height: 257px;
-  border: 1px solid;  
+    margin-top: -135px;
+    margin-left: 129px;
+    width: 85%;
+    height: 257px;
   }
+
+  .TypeClothingSuggestion img{
+  width:120px;
+  font: bold 11px Arial;
+text-decoration: none;
+background-color: #EEEEEE;
+color: #333333;
+padding: 2px 6px 2px 6px;
+border: 1px solid #8f8f9d;
+margin: -1px 1px;
+border-radius: 5px;
+  }
+.TypeClothingSuggestion img:hover{
+  background:#d0d0d7;
+}
+
+#cloud {
+  width: 173px;
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: white;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #8f8f9d;
+  border-radius: 5px;
+}
+
+  
   .Suggestion{
   margin-left: 20px;
   }

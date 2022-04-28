@@ -73,7 +73,11 @@ function formatWeather(data){
 
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
-            "temp" : getTemperature(data.list[currentKey]),
+            "name": getName(data),
+            "time": getTime(data),
+            "temp": getTemperature(data.list[currentKey]),
+            "icon": getIcon(data.list[currentKey]),
+            "sky": getSky(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
@@ -105,7 +109,11 @@ function formatWeather(data){
         if(!jsonDoc.days[dayK].hours)jsonDoc.days[dayK].hours={};
 
         jsonDoc.days[dayK].hours[extractCurrentTime(data.list[currentKey].dt_txt)] = {
-            "temp" : getTemperature(data.list[currentKey]),
+       "name": getName(data),
+            "time": getTime(data),
+            "temp": getTemperature(data.list[currentKey]),
+            "icon": getIcon(data.list[currentKey]),
+            "sky": getSky(data.list[currentKey]),
             "cloud_coverage" : getCloudCoverage(data.list[currentKey]),
             "sunrise" : getSunrise(data),
             "sunset"  : getSunset(data),
@@ -149,8 +157,35 @@ function formatWeather(data){
     return data.name;
 }
 */
+
+function getName(data) {
+    
+    return data.city.name.replace("County", "")
+}
+
+function getTime(data) {
+
+    var d = new Date()
+    var localTime = d.getTime()
+    var localOffset = d.getTimezoneOffset()
+    var utc = localTime + localOffset
+    var time = utc + (1000 * data.city.timezone);
+    console.log(data)
+    var nd = new Date(time);
+ 
+    return nd.toUTCString().substring(17,22);
+}
+
+function getIcon(data) {
+    return 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@4x.png'
+}
+
+function getSky(data) {
+    return data.weather[0].main;
+}
+
 function getTemperature(data){
-    return data.main.temp;
+    return Math.ceil(data.main.temp);
 }
 
 // ---

@@ -9,10 +9,10 @@ const DayWeather = ({index, day, clickWeatherDay}) => {
 
       
         return (
-            <div>
-                <div className={"index_" + index}><button className="day" onClick={clickWeatherDay} id={day}> {day} </button><p className="Temp">7C</p></div>  
+         
+                <div className={"index_" + index}><button className="day" onClick={clickWeatherDay} id={day}> {day} </button></div>  
 
-            </div>
+          
        
 
            
